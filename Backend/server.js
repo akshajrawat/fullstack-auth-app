@@ -1,5 +1,6 @@
 // basic setup
 const express = require("express");
+const cookieparser = require("cookie-parser");
 require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -14,6 +15,7 @@ dbConnect();
 
 // middlewares and Routing
 app.use(express.json());
+app.use(cookieparser())
 app.use("/auth", authRoute);
 app.use(errorHandler);
 
