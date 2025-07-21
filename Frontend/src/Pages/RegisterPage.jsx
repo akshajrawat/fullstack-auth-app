@@ -82,7 +82,7 @@ const RegisterPage = () => {
 
             <div className="flex gap-3 mx-auto font-semibold">
               <p className="text-[#0C363C]">Already have an account?</p>
-              <Link className="text-blue-600" to={""}>
+              <Link className="text-blue-600" to={"/"}>
                 {" "}
                 Login{" "}
               </Link>
