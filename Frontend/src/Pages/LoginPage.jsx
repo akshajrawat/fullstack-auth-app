@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import FormBuilder from "../Components/FormBuilder";
 import study from "../Assets/study3.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const formSchema = [
   {
@@ -33,7 +34,19 @@ export const formSchema = [
 ];
 
 const LoginPage = () => {
-  const onSubmit = () => {};
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    try {
+      await axios.post("http://localhost:5000/auth/login", data, {
+        withCredentials: true,
+      });
+      console.log("Login success");
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error while registering", error.message);
+    }
+  };
 
   return (
     // login page start

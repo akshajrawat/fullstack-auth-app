@@ -3,6 +3,7 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
 const User = require("../Model/userModel");
 const tokenGenerator = require("../Util/tokenGenerator");
+const Log = require("../Model/logModel");
 
 // controllers
 
@@ -64,6 +65,20 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 });
 
+// messages
+const funnyLoginMessages = [
+  "🔓 Welcome back, you sneaky genius!",
+  "🚀 Logged in! Your mission begins now.",
+  "🕵️‍♂️ Access granted. Don't break anything.",
+  "💻 You again? The keyboard missed you.",
+  "🎉 Login successful! Now pretend to be productive.",
+  "🍕 You logged in faster than I could order pizza!",
+  "🧠 System says you're too smart to be real.",
+  "🤖 Authenticated. Robots would be jealous.",
+  "🪄 Welcome, wizard. Your magic password worked.",
+  "🐱‍👓 You're in! The nerd gods approve.",
+];
+
 // login User
 // Path :- /auth/login
 // @ACCESS :- PUBLIC
@@ -100,6 +115,18 @@ const loginUser = asyncHandler(async (req, res) => {
     secure: process.env.NODE_ENV === "production", // send only on HTTPS in prod
     sameSite: "strict", // CSRF protection
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  });
+
+  // update log
+  const randomMsg =
+    funnyLoginMessages[Math.floor(Math.random() * funnyLoginMessages.length)];
+
+  await Log.create({
+    user: user._id,
+    date: Date.now(),
+    message: randomMsg,
+    ipAddress: req.ip,
+    userAgent: req.get("User-Agent"),
   });
 
   // send response

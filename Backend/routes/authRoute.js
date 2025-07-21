@@ -11,7 +11,7 @@ const router = express.Router();
 router.post("/register", registerUser);
 
 // Path :- /auth/login
-router.get("/login", loginUser);
+router.post("/login", loginUser);
 
 // exports
 module.exports = router;
