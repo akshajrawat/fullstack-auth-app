@@ -7,8 +7,6 @@ import Routing from "./Routes/Routing.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <StrictMode>
-      <Routing />
-    </StrictMode>
+    <Routing />
   </BrowserRouter>
 );

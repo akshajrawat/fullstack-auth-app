@@ -1,71 +1,120 @@
-# 🔐 Fullstack Auth API (Backend Only)
+readme: |
 
-This project is a backend authentication system built using **Node.js**, **Express**, and **MongoDB**. It features **JWT token-based authentication**, secure cookie handling, and a modular folder structure for scalability and maintainability.
+# 🔐 Fullstack Authentication System (MERN Stack)
 
----
-
-## ✨ Features
-
-- ✅ JWT token-based authentication
-- 🍪 JWT token stored securely in HTTP-only cookies
-- 🧠 Centralized async error handling using `express-async-handler`
-- 📦 Custom error middleware for consistent error responses
-- ♻️ Reusable token generator utility
-- 📁 Environment-based config setup for database connection
-- 🧩 Constants for status codes to avoid magic numbers
+A clean and secure fullstack authentication system using **Node.js**, **Express**, **MongoDB**, and **React (Vite)**. Features JWT-based authentication, cookie handling, role-based access (admin/user), and login logs — with a modular codebase for scalability.
 
 ---
 
-## ⚙️ Utilities
+## ✅ Features
 
-- **Token Generator**
-  - A utility function in `/Util` to create JWT tokens.
-  - Pure and reusable.
-- **Status Code Constants**
-  - Centralized `STATUS_CODES` object for use across middleware and controllers.
+### 🔒 Backend (Express + MongoDB)
 
----
+- ✅ JWT token-based login & register
+- 🍪 Token set securely in `httpOnly` cookie
+- 🧠 `express-async-handler` used with centralized error handling
+- 📦 `tokenGenerator()` utility for JWT signing
+- 🛡️ Protected routes via custom `tokenHandler` middleware
+- 📄 User login logs stored per request (device info, timestamp, message)
+- 🧩 Error constants handled through a utility file
 
-## 🍪 Cookie-Based Authentication
+### 💻 Frontend (React + Tailwind)
 
-- JWT token is securely sent to the client in an HTTP-only cookie.
-- Cookie is:
-  - `httpOnly` for security
-  - `sameSite: strict` to reduce CSRF risks
-  - `secure` in production (HTTPS)
-
----
-
-## ✅ What's Done
-
-- [x] Backend API complete
-- [x] Cookie-based token handling
-- [x] Clean modular folder setup
-- [x] Middleware-driven error management
+- ⚛️ Built with **Vite + React Router DOM**
+- 🎨 **Tailwind CSS** for responsive styling
+- 🔁 Reusable `FormBuilder` component
+- 🔐 Role-based route protection via `<ProtectedRoutes />`
+- 🧠 Uses `useFetch()` hook for fetching user & logs
+- 📋 `Dashboard` shows user login logs
+- 📊 `AdminDashboard` shows all users (admin-only)
 
 ---
 
-## 🚧 Frontend
+## 🧰 Technologies Used
 
-Frontend is **coming soon**. This backend is built to support a React or similar frontend in the future with secure JWT cookie-based login/logout flow.
-
----
-
-## 📌 Tech Stack
+### Backend
 
 - Node.js
-- Express.js
+- Express
 - MongoDB + Mongoose
 - JWT
 - bcrypt
 - cookie-parser
+- express-async-handler
+
+### Frontend
+
+- React
+- React Router DOM
+- Tailwind CSS
+- react-hot-toast
+- Vite
+
+---
+
+## 📦 Installation
+
+1. Clone the repo
+
+   ```bash
+   git clone https://github.com/your-username/fullstack-auth.git
+   ```
+
+2. Setup backend
+
+   ```bash
+   cd Backend
+   npm install
+   touch .env
+   ```
+
+   Fill in `.env`:
+
+   ```env
+   MONGO_URI=your_mongo_uri
+   JWT_SECRET=your_secret_key
+   NODE_ENV=development
+   ```
+
+3. Start backend
+
+   ```bash
+   npm run dev
+   ```
+
+4. Setup frontend
+   ```bash
+   cd ../Frontend
+   npm install
+   npm run dev
+   ```
+
+---
+
+## 🌟 Highlights
+
+| Feature                  | Description                                 |
+| ------------------------ | ------------------------------------------- |
+| ✅ Auth (Login/Register) | With hashed password and secure cookies     |
+| 📋 Login Logs            | Track IP, agent, and custom messages        |
+| 🔐 Role Protection       | `/adminDashboard` only accessible by admins |
+| 📁 Modular Structure     | Follows best practice directory structure   |
+| 🧠 Error Handling        | Clean, reusable, and centralized            |
+
+---
+
+## 📸 UI Screens
+
+- Login/Register forms
+- Dashboard showing logs
+- Admin dashboard showing users with S.No, name, email, role, etc.
 
 ---
 
 ## 📄 License
 
-MIT
+MIT License — free to use, modify, or share.
 
 ---
 
-> Feel free to clone, fork, or use this repo as a starter for your own secure auth system!
+> Made with 💻 and ☕ as a learning project to showcase fullstack skills including backend auth logic, JWT handling, and clean frontend UX.

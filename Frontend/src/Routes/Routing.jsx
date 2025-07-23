@@ -6,6 +6,7 @@ import RegisterPage from "../Pages/RegisterPage";
 import Dashboard from "../Pages/Dashboard";
 import MainLayout from "../Layout/MainLayout";
 import ProtectedRoutes from "./ProtectedRoutes";
+import AdminDashboard from "../Pages/AdminDashboard";
 
 const Routing = () => {
   return (
@@ -20,6 +21,7 @@ const Routing = () => {
           {/* Routes following main layout */}
           <Route element={<MainLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="adminDashboard" element={<AdminDashboard />} />
           </Route>
         </Route>
       </Route>

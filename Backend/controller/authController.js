@@ -38,12 +38,12 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   // creating jwt token
-  const token = tokenGenerator(
-    newUser._id,
-    newUser.name,
-    newUser.email,
-    newUser.role
-  );
+  const token = tokenGenerator({
+    id: newUser._id,
+    name: newUser.name,
+    email: newUser.email,
+    role: newUser.role,
+  });
 
   // Set JWT token in cookie
   res.cookie("token", token, {
@@ -51,6 +51,15 @@ const registerUser = asyncHandler(async (req, res) => {
     secure: process.env.NODE_ENV === "production", // send only on HTTPS in prod
     sameSite: "strict", // CSRF protection
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  });
+
+  // logs
+  await Log.create({
+    user: newUser._id,
+    date: Date.now(),
+    message: "You just registered",
+    ipAddress: req.ip,
+    userAgent: req.get("User-Agent"),
   });
 
   // send response
@@ -107,7 +116,12 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   // generate token for successfull login
-  const token = tokenGenerator(user._id, user.name, user.email, user.role);
+  const token = tokenGenerator({
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  });
 
   // Set JWT token in cookie
   res.cookie("token", token, {

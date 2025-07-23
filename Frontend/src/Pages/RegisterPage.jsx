@@ -3,6 +3,7 @@ import FormBuilder from "../Components/FormBuilder";
 import study from "../Assets/study3.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const formSchema = [
   {
@@ -54,9 +55,12 @@ const RegisterPage = () => {
       await axios.post("http://localhost:5000/auth/register", data, {
         withCredentials: true,
       });
+      toast.success("Registered");
       navigate("/dashboard");
     } catch (error) {
-      console.error("Error while registering", error.message);
+      const errorMsg = error.response?.data?.message || "Registration failed";
+      toast.error(errorMsg);
+      console.error("Error while registering", errorMsg);
     }
   };
 
