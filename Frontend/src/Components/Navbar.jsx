@@ -1,11 +1,11 @@
 import React, { createRef } from "react";
 import useFetch from "../Utils/useFetch";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Navbar = () => {
   const { user, exist } = useFetch();
-
+  const navigate = useNavigate();
   const location = useLocation();
   // load the data
   if (exist === null)
@@ -20,9 +20,7 @@ const Navbar = () => {
       await axios.post("http://localhost:5000/app/logout", null, {
         withCredentials: true,
       });
-
-      // Reload the page
-      window.location.reload();
+      navigate("/");
     } catch (error) {
       console.error(error.message);
     }
@@ -57,7 +55,7 @@ const Navbar = () => {
       {/* profile */}
       <div className="flex justify-center items-center lg:w-[20%]">
         <div className="flex gap-1 items-center justify-center  rounded-2xl px-2 py-1  lg:rounded-full bg-[#FFF9E5]">
-          <div className="h-7 w-7 lg:h-10 lg:w-10 rounded-full overflow-hidden ">
+          <div className="h-7 w-7 lg:h-10 lg:w-10 rounded-full overflow-hidden border-2 border-black">
             <img
               className="w-full h-full object-cover"
               src="https://picsum.photos/200/300"

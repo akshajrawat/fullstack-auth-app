@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="w-screen h-screen bg-[#FFF9E5]">
+    <div className="w-screen h-screen bg-[#FFF9E5] scrollbar-thin">
       <Toaster position="top-center" reverseOrder={false} />
       <Outlet />
     </div>

@@ -53,37 +53,37 @@ const LoginPage = () => {
 
   return (
     // login page start
-    <div className="h-full w-full flex justify-center items-center bg-[#AEC8A4]">
+    <div className="h-full w-full flex justify-center items-center bg-[#AEC8A4] p-3">
       {/* login form */}
-      <div className="h-[90%] w-[70%] shadow-2xl rounded-xl overflow-hidden bg-[#FFF9E5] flex ">
+      <div className="h-[90%] w-full md:w-[70%] shadow-2xl rounded-xl overflow-hidden bg-[#FFF9E5] flex ">
         {/* img section */}
-        <div className="h-full w-[35%]">
+        <div className="hidden lg:flex h-full w-[35%]">
           <img className="w-full h-full object-cover" src={study} alt="study" />
         </div>
 
         {/* login section */}
-        <div className="h-full w-[65%] flex flex-col justify-start items-center gap-3 pt-30">
-          <div className=" flex flex-col justify-center items-center">
-            <h3 className=" text-4xl font-bold text-[#0C363C]">
+        <div className="h-full w-full pt-10 sm:pt-20 flex flex-col justify-start items-center gap-3  lg:w-[65%] ">
+          <div className=" flex flex-col justify-center items-center gap-2">
+            <h3 className=" text-4xl font-bold text-[#0C363C] text-center w-[80%]">
               Welcome back to AuthApp
             </h3>
-            <p className="w-[60%] text-center font-semibold text-[#0c363c99]">
+            <p className="w-full lg:w-[60%] text-center font-semibold text-[#0c363c99]">
               Sign in to access protected routes and role-based features
             </p>
           </div>
 
           {/* inputs */}
-          <div className="w-[60%] flex flex-col gap-2">
+          <div className="w-full sm:w-[60%] flex flex-col gap-2">
             <FormBuilder schema={formSchema} onSubmit={onSubmit} />
 
             {/* seprtation */}
-            <div className="flex items-center w-full my-2">
+            <div className="flex items-center w-full my-2 px-5 sm:px-0">
               <hr className="flex-grow border-t border-[#0C363C]" />
               <span className="mx-4 text-[#0C363C] font-medium">OR</span>
               <hr className="flex-grow border-t border-[#0C363C]" />
             </div>
 
-            <div className="flex gap-3 mx-auto font-semibold">
+            <div className="flex gap-2 mx-auto font-semibold">
               <p className="text-[#0C363C]">Dont have an account?</p>
               <Link to={"/register"} className="text-blue-600">
                 {" "}

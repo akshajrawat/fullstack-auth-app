@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a1a1aa; /* tailwind zinc-400 */
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #71717a; /* tailwind zinc-600 */
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #a1a1aa transparent;
+}
