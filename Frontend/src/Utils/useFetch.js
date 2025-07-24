@@ -12,7 +12,7 @@ const useFetch = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/app/user", {
+        const res = await axios.get("/app/user", {
           withCredentials: true,
         });
         setUser({

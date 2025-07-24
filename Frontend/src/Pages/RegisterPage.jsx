@@ -52,7 +52,7 @@ const RegisterPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/auth/register", data, {
+      await axios.post("/auth/register", data, {
         withCredentials: true,
       });
       toast.success("Registered");

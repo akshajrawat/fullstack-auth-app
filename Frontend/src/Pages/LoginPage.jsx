@@ -39,7 +39,7 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/auth/login", data, {
+      await axios.post("/auth/login", data, {
         withCredentials: true,
       });
       toast.success("Login Successful");

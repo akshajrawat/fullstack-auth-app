@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:5000/app/logout", null, {
+      await axios.post("/app/logout", null, {
         withCredentials: true,
       });
       navigate("/");
