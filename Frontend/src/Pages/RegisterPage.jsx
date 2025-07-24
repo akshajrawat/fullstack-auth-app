@@ -66,7 +66,7 @@ const RegisterPage = () => {
 
   return (
     // Register page start
-    <div className="h-full w-full flex justify-center items-center bg-[#AEC8A4] p-3">
+    <div className="h-screen w-screen flex justify-center items-center bg-[#AEC8A4] p-3">
       {/* Register form */}
       <div className="h-[90%] w-full md:w-[70%] shadow-2xl rounded-xl overflow-hidden bg-[#FFF9E5] flex ">
         {/* img section */}
